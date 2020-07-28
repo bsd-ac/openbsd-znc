@@ -1,0 +1,3 @@
+# ZNC role for OpenBSD
+
+

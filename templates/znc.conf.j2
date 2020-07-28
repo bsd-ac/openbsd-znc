@@ -1,0 +1,65 @@
+AnonIPLimit = 10
+ConnectDelay = 5
+HideVersion = true
+LoadModule = webadmin
+LoadModule = block_motd
+LoadModule = chansaver
+MaxBufferSize = 500
+ProtectWebSessions = true
+ServerThrottle = 30
+Skin = _default_
+StatusPrefix = *
+Version = OpenBSD
+
+<Listener listener1>
+	AllowIRC = true
+	AllowWeb = false
+	Host = 127.0.0.1
+	IPv4 = true
+	IPv6 = false
+	Port = {{ znc_irc_port }}
+	SSL = false
+	URIPrefix = /
+</Listener>
+
+<Listener listener2>
+	AllowIRC = false
+	AllowWeb = true
+	Host = 127.0.0.1
+	IPv4 = true
+	IPv6 = false
+	Port = {{ znc_web_port }}
+	SSL = false
+	URIPrefix = /
+</Listener>
+
+<User {{ znc_user }}>
+	Admin = true
+	Allow = *
+	AltNick = {{ znc_user }}_
+	AppendTimestamp = false
+	AutoClearChanBuffer = true
+	AutoClearQueryBuffer = true
+	Buffer = 50
+	DenyLoadMod = false
+	DenySetBindHost = false
+	Ident = {{ znc_user }}
+	JoinTries = 10
+	LoadModule = chansaver
+	LoadModule = controlpanel
+	MaxJoins = 0
+	MaxNetworks = 5
+	MaxQueryBuffers = 50
+	MultiClients = true
+	Nick = {{ znc_user }}
+	PrependTimestamp = true
+	QuitMsg = %znc%
+	RealName = {{ znc_user }}
+	TimestampFormat = [%H:%M:%S]
+  <Pass password>
+		Method = sha256
+		Hash = e56dd312770c22db6dbce4f7851c8470bda016448fa83c59b922c9794f51d817
+		Salt = ZLr(PlECgql9a4HQmgw6
+	</Pass>
+</User>
+
